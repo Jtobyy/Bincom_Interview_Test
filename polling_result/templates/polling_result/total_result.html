@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}    
+    <head>
+        <title>Question 2) Summed results</title>
+        <link rel="stylesheet" href="{% static 'polling_result/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'polling_result/css/individual_polling_result.css' %}">
+    </head>
+    <body>
+        <main>
+            <p>Select a Local Government Area</p>    
+            <select class="form-select" id="selectId">
+
+                {% if result %}
+                <option disabled> Local Governments </option>    
+                {% for lga in lgas %}
+                {% if lga.lga_name == result.lga %}
+                <option value="{{ lga.lga_id }}" selected>{{ lga.lga_name }}</option>
+                {% else %}
+                <option value="{{ lga.lga_id }}">{{ lga.lga_name }}</option>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <option selected disabled> Local Governments </option>    
+                {% for lga in lgas %}
+                <option value="{{ lga.lga_id }}">{{ lga.lga_name }}</option>
+                {% endfor %}
+                {% endif %}
+            </select>
+            <a id="reload"></a>
+            <table>
+                <tr>
+                    <th>Local Government</th>
+                    <th>State</th>    
+                    <th>Summed Result</th>
+                </tr>
+                <tr>
+                    <td> {{ result.lga }} </td>
+                    <td> {{ result.state }} </td>
+                    <td> {{ result.score }} </td>
+                </tr>
+            </table>
+        </main>    
+        <a href="{% url 'polling_result:new_result' %}" class="next"><button class="btn btn-primary">Question 3 (Add new result)</button></a>
+        <script src="{% static 'polling_result/js/jquery.min.js' %}"></script>
+        <script rel="stylesheet" src="{% static 'polling_result/js/individual_polling_result.js' %}"></script>
+    </body>
+</html>

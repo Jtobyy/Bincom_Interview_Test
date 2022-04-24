@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}    
+    <head>
+        <title>Question 3) New results</title>
+        <link rel="stylesheet" href="{% static 'polling_result/css/font/bootstrap-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'polling_result/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'polling_result/css/individual_polling_result.css' %}">
+    </head>
+    <body>
+        {% if messages %}	
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                <!--<li class="alert {{message.tags}} alert-dismissible fade show" role="alert">-->
+                <li class="alert {{message.tags}} alert-dismissible show" role="alert">
+                    <p>{{ message }}</p>
+                    <button type="button" class="close btn-primary" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}    
+        <main>    
+            <form method="POST" action="{% url 'polling_result:new_result' %}" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="polling_unit">Agent's name:</label>
+                    <input type="text" name="agent" id="agent" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="polling_unit">Polling Unit Name:</label>
+                    <input type="text" name="polling_unit" id="polling_unit" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="ward">Ward:</label>
+                    <input type="text" name="ward" id="ward" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="ward">LGA:</label>
+                    <input type="text" name="lga" id="lga" class="form-control" required>
+                </div>                
+                <div class="form-group">
+                    <label for="ward">State:</label>
+                    <input type="text" name="state" id="state" class="form-control" required>
+                </div>                
+                <div class="form-group">
+                    <label for="pdp">PDP score:</label>    
+                    <input type="number" name="pdp" id="pdp" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="dpp">DPP score:</label>    
+                    <input type="number" name="dpp" id="dpp" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="acn">ACN score:</label>    
+                    <input type="number" name="acn" id="acn" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="ppa">PPA score:</label>    
+                    <input type="number" name="ppa" id="ppa" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="cdc">CDC score:</label>    
+                    <input type="number" name="cdc" id="cdc" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="jp">JP score:</label>    
+                    <input type="number" name="jp" id="jp" class="form-control" required>
+                </div>
+                <button class="btn btn-primary">Add</button>
+            </form>
+        </main>
+        <a href="{% url 'polling_result:individual_polling_result' %}" class="next"><button class="btn btn-primary">Question 1 (individual polling units result)</button></a>
+        <script src="{% static 'polling_result/js/jquery.min.js' %}"></script>
+        <script rel="stylesheet" src="{% static 'polling_result/js/individual_polling_result.js' %}"></script>
+        <script src="{% static 'polling_result/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

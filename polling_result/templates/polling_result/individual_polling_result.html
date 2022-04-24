@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}    
+    <head>
+        <title>
+            Question 1) individual Polling Unit Result
+        </title>
+        <link rel="stylesheet" href="{% static 'polling_result/css/bootstrap.min.css' %}">
+        <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'polling_result/css/individual_polling_result.css' %}">
+    </head>
+    <body>
+        <main>
+            <table>
+                <tr>
+                    <th>Party</th> <!-- party abbreviation -->
+                    <th>Score</th> <!-- party score -->
+                    <th>Polling Unit</th> <!-- polling unit name -->
+                    <th>Ward</th> <!-- polling unit ward -->
+                    <th>LGA</th> <!-- polling unit LGA -->
+                    <th>State</th> <!-- polling unit State -->
+                </tr>
+            {% for val in results %}
+                <tr>
+                    <td>{{ val.party }}</td>
+                    <td>{{ val.score }}</td>
+                    <td>{{ val.unit }}</td>
+                    <td>{{ val.ward }}</td>
+                    <td>{{ val.lga }}</td>
+                    <td>{{ val.state }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </main>    
+        <a href="{% url 'polling_result:total_result' %}" class="next"><button class="btn btn-primary">Question 2 (results by LGA)</button></a>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="{% static 'polling_result/js/jquery.min.js' %}"></script>
+        <script rel="stylesheet" src="{% static 'polling_result/js/individual_polling_result.js' %}"></script>
+        <script src="{% static 'polling_result/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

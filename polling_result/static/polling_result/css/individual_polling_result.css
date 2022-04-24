@@ -1,0 +1,91 @@
+body {
+    background-color: bisque
+}
+main {
+    padding: 20px;
+}
+table {
+    width: 100%;
+}
+tr {
+    background-color: #d21dd2;
+}
+th {
+    color: purple;
+    background-color: white;
+    text-align: center;
+}
+td {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border: 1px solid gray;
+}
+
+select {
+    margin: 20px;
+    margin-left: 0;
+}
+
+.add {
+    font-size: 1.5em;
+    color: blue;    
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    transition: all .3s;
+}
+.add p {
+    display: inline-block;
+    padding: 0 0 0 25px;
+}
+.add:hover {
+    color: rgb(154, 154, 248);
+    cursor: pointer;
+}
+.add:active {
+    color: blue;    
+}
+
+form {
+    padding: 40px;
+}
+input {
+    margin: 10px;
+    margin-bottom: 30px;
+}
+.messages
+{
+  z-index: 3;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  left: 20vw;
+  margin-left: -50px;
+  opacity: 0.98;
+}
+.success {
+    background-color: rgba(144, 238, 144, 0.8);
+  }
+.error {
+    background-color: rgb(241, 134, 134);
+  }
+  li {
+    list-style-type: none;    
+  }
+  .new {
+      margin-top: 10vh;
+  }
+
+.next button{
+    margin: 40px;
+}
+
+
+@media screen and (max-width: 660px){
+  .messages {
+    padding: 0px;
+    font-size: .8rem;
+    margin-left: -80px;
+  }
+}
